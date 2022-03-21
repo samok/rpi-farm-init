@@ -10,7 +10,7 @@ node {
         //sh ('echo test2 ${alarm_pwd}')
 		sh ('ls -la')
 		sh ('pwd')
-        sh ('expect become_root.exp 10.0.0.9 alarm alarm root')
+        sh ('expect ./scripts/become_root.exp 10.0.0.9 alarm alarm root')
         //stage("SSH test") {
         //    sshCommand remote: remote, command: 'pwd'
         //}
