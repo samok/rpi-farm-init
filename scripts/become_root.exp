@@ -10,8 +10,9 @@ interact -o -nobuffer -re $prompt return
 send "$password\r"
 interact -o -nobuffer -re $prompt return
 send "su - root\r"
-interact -o -nobuffer -re $password2 return
-send "pwd\r"
+interact -o -nobuffer -re $prompt return
+send "$password2\r"
+send "whoami\r"
 expect "#"
 send "exit\n"; exit 0
 expect eof
