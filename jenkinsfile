@@ -1,8 +1,10 @@
 pipeline {
 	agent { label 'docker' }
 	stages {
-		stage ('') {
-			sh ("expect ${WORKSPACE}/become_root.exp 10.0.0.9 alarm alarm root")
+		stage ('test appel script') {
+			steps {
+				sh ("expect ${WORKSPACE}/become_root.exp 10.0.0.9 alarm alarm root")
+			}
 		}
 	}
 }
