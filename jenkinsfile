@@ -1,18 +1,8 @@
-def remote = [:]
-remote.name = "worker1"
-remote.host = "10.0.0.9"
-remote.allowAnyHosts = true
-
-node {
-    withCredentials([usernamePassword(credentialsId: 'rpi_farm_alarm_id', usernameVariable: 'alarm_usr', passwordVariable: 'alarm_pwd')]) {
-        //remote.user = alarm_pwd
-        //remote.password = root_pwd
-        //sh ('echo test2 ${alarm_pwd}')
-		sh ('ls -la')
-		sh ('pwd')
-        sh ("expect /var/jenkins_home/workspace/pre-setup@script/scripts/become_root.exp 10.0.0.9 alarm alarm root")
-        //stage("SSH test") {
-        //    sshCommand remote: remote, command: 'pwd'
-        //}
-    }
+pipeline {
+	agent { label 'docker' }
+	stages {
+		stage ('') {
+			sh ("expect ${WORKSPACE}/become_root.exp 10.0.0.9 alarm alarm root")
+		}
+	}
 }
