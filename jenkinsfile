@@ -1,0 +1,16 @@
+def remote = [:]
+remote.name = "worker1"
+remote.host = "10.0.0.9"
+remote.allowAnyHosts = true
+
+node {
+    withCredentials([usernamePassword(credentialsId: 'rpi_farm_alarm_id', usernameVariable: 'alarm_usr', passwordVariable: 'alarm_pwd')]) {
+        //remote.user = alarm_pwd
+        //remote.password = root_pwd
+        //sh ('echo test2 ${alarm_pwd}')
+        sh ('expect become_root.exp ${remote.host} ${alarm_pwd} ${alarm_pwd} root')
+        //stage("SSH test") {
+        //    sshCommand remote: remote, command: 'pwd'
+        //}
+    }
+}

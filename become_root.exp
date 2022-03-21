@@ -1,0 +1,17 @@
+#!/usr/bin/expect
+
+set host [lindex $argv 0];
+set user [lindex $argv 1];
+set password [lindex $argv 2];
+set password2 [lindex $argv3];
+eval spawn ssh -oStrictHostKeyChecking=no -oCheckHostIP=no $user@$host
+set prompt ":|#|\\\$"
+interact -o -nobuffer -re $prompt return
+send "$password\r"
+interact -o -nobuffer -re $prompt return
+send "su - root\r"
+interact -o -nobuffer -re $password2 return
+send "pwd\r"
+expect "#"
+send "exit\n"; exit 0
+expect eof
