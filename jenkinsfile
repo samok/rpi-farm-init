@@ -8,7 +8,7 @@ node {
         //remote.user = alarm_pwd
         //remote.password = root_pwd
         //sh ('echo test2 ${alarm_pwd}')
-        sh ('expect become_root.exp ${remote.host} ${alarm_pwd} ${alarm_pwd} root')
+        sh ('expect become_root.exp 10.0.0.9 alarm alarm root')
         //stage("SSH test") {
         //    sshCommand remote: remote, command: 'pwd'
         //}
