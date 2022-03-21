@@ -3,7 +3,8 @@ pipeline {
 	stages {
 		stage ('test appel script') {
 			steps {
-				sh ("expect ${WORKSPACE}/become_root.exp 10.0.0.9 alarm alarm root")
+				sh ("ls -la")
+				sh ("expect ${WORKSPACE}/scripts/become_root.exp 10.0.0.9 alarm alarm root")
 			}
 		}
 	}
